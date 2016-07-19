@@ -10,14 +10,7 @@
 
                 <f:render partial="Cart/CouponForm" arguments="{cart:cart}"/>
 
-                <f:render partial="Cart/OrderForm" arguments="{
-                    cart:cart,
-                    orderItem:orderItem,
-                    billingAddress:billingAddress,
-                    shippingAddress:shippingAddress,
-                    shippings:shippings,
-                    payments:payments}"
-                />
+                <f:render partial="Cart/OrderForm" arguments="{_all}"/>
             </f:then>
             <f:else>
                 <f:render partial="Cart/Empty"/>
