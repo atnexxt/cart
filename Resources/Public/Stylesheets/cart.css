@@ -1,0 +1,25 @@
+.bg-light-grey {
+    background-color: #efefef;
+}
+
+.tx-cart form#form-order .form-title .num, .tx-cart form#form-cart .form-title .num {
+    background: #333;
+    color: #fff;
+    display: inline-block;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.75em;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+
+.tx-cart h5.form-title {
+    background: #ccc;
+    margin: 0;
+    padding: 0 20px;
+    line-height: 2;
+}

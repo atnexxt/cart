@@ -17,13 +17,13 @@ plugin.tx_cart {
 
     view {
         templateRootPaths {
-            0 = {$plugin.tx_cart.view.default.templateRootPath}
+            0 = {$plugin.tx_cart.view.templateRootPath}
         }
         partialRootPaths {
-            0 = {$plugin.tx_cart.view.default.partialRootPath}
+            0 = {$plugin.tx_cart.view.partialRootPath}
         }
         layoutRootPaths {
-            0 = {$plugin.tx_cart.view.default.layoutRootPath}
+            0 = {$plugin.tx_cart.view.layoutRootPath}
         }
     }
 

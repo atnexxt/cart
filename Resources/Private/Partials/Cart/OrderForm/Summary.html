@@ -25,7 +25,7 @@
     </tr>
 </f:if>
 <f:if condition="{settings.showCartAction.summary.fields.cart.taxes}">
-    <f:render partial="Cart/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.taxes}"/>
+    <f:render partial="Cart/OrderForm/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.taxes}"/>
 </f:if>
 
 <f:if condition="{cart.discountGross}">
@@ -54,7 +54,7 @@
         </tr>
     </f:if>
     <f:if condition="{settings.showCartAction.summary.fields.discount.taxes}">
-        <f:render partial="Cart/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.discountTaxes}"/>
+        <f:render partial="Cart/OrderForm/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.discountTaxes}"/>
     </f:if>
 </f:if>
 
@@ -83,7 +83,7 @@
     </tr>
 </f:if>
 <f:if condition="{settings.showCartAction.summary.fields.service.taxes}">
-    <f:render partial="Cart/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.serviceTaxes}"/>
+    <f:render partial="Cart/OrderForm/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.serviceTaxes}"/>
 </f:if>
 
 <f:if condition="{settings.showCartAction.summary.fields.total.net}">
@@ -111,5 +111,5 @@
     </tr>
 </f:if>
 <f:if condition="{settings.showCartAction.summary.fields.total.taxes}">
-    <f:render partial="Cart/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.totalTaxes}"/>
+    <f:render partial="Cart/OrderForm/TaxList" arguments="{taxClasses: cart.taxClasses, taxes: cart.totalTaxes}"/>
 </f:if>
