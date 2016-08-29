@@ -27,19 +27,6 @@ class OrderItemValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
     protected $propertyValidators = array();
 
     /**
-     * @var \TYPO3\CMS\Form\Utility\SessionUtility
-     */
-    protected $sessionUtility;
-
-    /**
-     * @param \TYPO3\CMS\Form\Utility\SessionUtility $sessionUtility
-     */
-    public function injectSessionUtility(\TYPO3\CMS\Form\Utility\SessionUtility $sessionUtility)
-    {
-        $this->sessionUtility = $sessionUtility;
-    }
-
-    /**
      * Checks if the given value is valid according to the validator, and returns
      * the Error Messages object which occurred.
      *
@@ -79,12 +66,9 @@ class OrderItemValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
          * This results in a negative validation (if a validation is set).
          * Therefore, look first in the session.
          */
-        if ($this->sessionUtility->getSessionData($propertyName)) {
-            $propertyValue = $this->sessionUtility->getSessionData($propertyName);
-        } else {
-            $getter = 'get' . ucfirst($propertyName);
-            $propertyValue = $item->$getter();
-        }
+        $getter = 'get' . ucfirst($propertyName);
+        $propertyValue = $item->$getter();
+
         return $propertyValue;
     }
 
@@ -158,6 +142,23 @@ class OrderItemValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
             $propertyValue = $this->getPropertyValue($object, $propertyName);
             $this->checkProperty($propertyValue, $validators, $propertyName);
         }
+    }
+
+    /**
+     * Checks if the specified property of the given object is valid.
+     *
+     * If at least one error occurred, the result is FALSE.
+     *
+     * @param object $object The object containing the property to validate
+     * @param string $propertyName Name of the property to validate
+     * @return boolean TRUE if the property value is valid, FALSE if an error occurred
+     *
+     * @deprecated since Extbase 1.4.0, will be removed two versions after Extbase 6.1
+     * @api
+     */
+    public function isPropertyValid($object, $propertyName)
+    {
+        return true;
     }
 
     /**

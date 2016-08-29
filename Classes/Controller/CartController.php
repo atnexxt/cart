@@ -522,10 +522,10 @@ class CartController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         ) {
             $fields = $this->pluginSettings['validation']['orderCartAction']['fields'];
 
-            if (key_exists('acceptTerms', $fields)) {
+            if (array_key_exists('acceptTerms', $fields)) {
                 $this->setDynamicValidation('acceptTerms', $fields['acceptTerms']);
             }
-            if (key_exists('acceptConditions', $fields)) {
+            if (array_key_exists('acceptConditions', $fields)) {
                 $this->setDynamicValidation('acceptConditions', $fields['acceptConditions']);
             }
         }
@@ -548,6 +548,10 @@ class CartController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         \Extcode\Cart\Domain\Model\Order\Address $shippingAddress = null
     ) {
         $this->cart = $this->cartUtility->getCartFromSession($this->settings['cart'], $this->pluginSettings);
+
+        if ($this->cart->getCount() == 0) {
+            $this->redirect('showCart');
+        }
         $this->parseData();
 
         $this->orderUtility->checkStock($this->cart);
@@ -576,6 +580,9 @@ class CartController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->orderUtility->handlePayment($orderItem, $this->cart);
 
         $this->sendMails($orderItem, $billingAddress, $shippingAddress);
+
+        $this->view->assign('cart', $this->cart);
+        $this->view->assign('orderItem', $orderItem);
 
         $paymentId = $this->cart->getPayment()->getId();
         if (intval($this->pluginSettings['payments']['options'][$paymentId]['preventClearCart']) != 1) {
@@ -622,6 +629,7 @@ class CartController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         \Extcode\Cart\Domain\Model\Order\Address $billingAddress,
         \Extcode\Cart\Domain\Model\Order\Address $shippingAddress = null
     ) {
+        /* @var \Extcode\Cart\Service\MailHandler $mailHandler*/
         $mailHandler = $this->objectManager->get(
             \Extcode\Cart\Service\MailHandler::class
         );
@@ -643,6 +651,7 @@ class CartController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         \Extcode\Cart\Domain\Model\Order\Address $billingAddress,
         \Extcode\Cart\Domain\Model\Order\Address $shippingAddress = null
     ) {
+        /* @var \Extcode\Cart\Service\MailHandler $mailHandler*/
         $mailHandler = $this->objectManager->get(
             \Extcode\Cart\Service\MailHandler::class
         );

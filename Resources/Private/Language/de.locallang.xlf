@@ -161,6 +161,14 @@
                 <source>Shipping Address</source>
                 <target>Versandadresse</target>
             </trans-unit>
+            <trans-unit id="tx_cart_domain_model_order_item.order_shipping">
+                <source>Shipping</source>
+                <target>Versand</target>
+            </trans-unit>
+            <trans-unit id="tx_cart_domain_model_order_item.order_payment">
+                <source>Payment</source>
+                <target>Zahlung</target>
+            </trans-unit>
             <trans-unit id="tx_cart_domain_model_order_item.comment">
                 <source>Comment</source>
                 <target>Bemerkung</target>
@@ -422,6 +430,10 @@
             <trans-unit id="tx_cart.controller.order.action.order_cart.thank_you">
                 <source>Thank you for your order.</source>
                 <target>Vielen Dank für Ihre Bestellung.</target>
+            </trans-unit>
+            <trans-unit id="tx_cart.controller.order.action.order_cart.thank_you_order_number">
+                <source>Your order number is: %1$s</source>
+                <target>Ihre Bestellnummer lautet: %1$s</target>
             </trans-unit>
 
             <trans-unit id="tx_cart.module.productController.listAction.header">

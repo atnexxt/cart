@@ -261,6 +261,9 @@
             <trans-unit id="tx_cart.controller.order.action.order_cart.thank_you">
                 <source>Thank you for your order.</source>
             </trans-unit>
+            <trans-unit id="tx_cart.controller.order.action.order_cart.thank_you_order_number">
+                <source>Your order number is: %1$s</source>
+            </trans-unit>
 
             <trans-unit id="tx_cart_domain_model_order_item">
                 <source>Order</source>
@@ -341,10 +344,10 @@
                 <source>Order Product</source>
             </trans-unit>
             <trans-unit id="tx_cart_domain_model_order_item.order_shipping">
-                <source>Order Shipping</source>
+                <source>Shipping</source>
             </trans-unit>
             <trans-unit id="tx_cart_domain_model_order_item.order_payment">
-                <source>Order Payment</source>
+                <source>Payment</source>
             </trans-unit>
             <trans-unit id="tx_cart_domain_model_order_item.crdate">
                 <source>Order Date</source>
